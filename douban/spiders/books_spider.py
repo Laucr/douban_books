@@ -35,14 +35,13 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
         items = []
         # objs = parse_a_book(response, _xpath='//div[@class="info"]/h2/a')
 
-        sel = scrapy.Selector(response)
-        texts = sel.xpath('//div[@class="info"]/h2/a')
-        _l = []
-        for a_sel in sel:
-            pair = {'title': a_sel.xpath('/text()').extract(),
-                    '_id': a_sel.xpath('/@href').extract()}
-            print a_sel.xpath('/@href').extract()
-            _l.append(pair)
+        item_size = len(response.xpath('//div[@class="info"]/h2/a'))
+        # I love this line :>
+        _l = [{'title': [a_title.extract() for a_title in response.xpath('//div[@class="info"]/h2/a/@title')][_iter],
+               '_id': [a_id.extract().split('/')[-2] for a_id in response.xpath('//div[@class="info"]/h2/a/@href')]
+               [_iter]} for _iter in range(item_size)]
+
+        print _l
 
         # //div[@id="link-report"]//p//span[@class="all hidden"][1]//div[@class="intro"]//p intro
         # for _iter_i in range(len(objs)):
