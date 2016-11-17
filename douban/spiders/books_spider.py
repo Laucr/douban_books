@@ -6,8 +6,6 @@ import urllib
 
 import scrapy
 
-from douban.items import DoubanItem
-
 sys.path.append('..')
 
 reload(sys)
@@ -47,9 +45,10 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
         item_size = len(response.xpath('//div[@class="info"]/h2/a'))
         # I love this line XD
         _items = [
-            {'title': [a_title.extract() for a_title in response.xpath('//div[@class="info"]/h2/a/@title')][_iter],
-             '_id': [a_id.extract() for a_id in response.xpath('//div[@class="info"]/h2/a/@href')]
-             [_iter]} for _iter in range(item_size)
+            {
+                'title': [a_title.extract() for a_title in response.xpath('//div[@class="info"]/h2/a/@title')][_iter],
+                '_id': [a_id.extract() for a_id in response.xpath('//div[@class="info"]/h2/a/@href')][_iter]
+            } for _iter in range(item_size)
             ]
 
         for _a_item in _items:
@@ -62,10 +61,9 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
 
     def parse_secondary_link(self, response):
         sel = scrapy.Selector(response)
-        item = DoubanItem()
-        item['title'] = response.meta['title']
-        item['intro'] = sel.xpath('//*[@id="link-report"]/div[1]/div/p/text()').extract()[0].encode('utf8')
-        # print item['intro']
-        item['category'] = response.meta['category']
-        # print item['category']
+        item = {
+            'title': response.meta['title'],
+            'intro': sel.xpath('//*[@id="link-report"]/div[1]/div/p/text()').extract()[0].encode('utf8'),
+            'category': response.meta['category']
+        }
         yield item
