@@ -11,7 +11,7 @@ import scrapy
 class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = scrapy.Item()
-    intro = scrapy.Item()
-    sort = scrapy.Item()
-    _id = scrapy.Item()
+    title = scrapy.Field()
+    intro = scrapy.Field()
+    category = scrapy.Field()
+    _id = scrapy.Field()
