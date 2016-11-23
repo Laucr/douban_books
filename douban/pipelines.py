@@ -9,7 +9,7 @@ import os
 import sys
 
 reload(sys)
-sys.setdefaultcoding('utf-8')
+sys.setdefaultencoding('utf-8')
 
 
 class FilePipeline(object):
