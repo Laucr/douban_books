@@ -21,8 +21,8 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
     allowed_domains = ['book.douban.com']
     start_urls = [
         # 'https://book.douban.com/tag/%E5%84%BF%E7%AB%A5%E6%96%87%E5%AD%A6',  # 儿童文学
-        # 'https://book.douban.com/tag/%E5%8E%86%E5%8F%B2',  # 历史
-        'https://book.douban.com/tag/%E6%8E%A8%E7%90%86',  # 推理
+        'https://book.douban.com/tag/%E5%8E%86%E5%8F%B2',  # 历史
+        # 'https://book.douban.com/tag/%E6%8E%A8%E7%90%86',  # 推理
         # 'https://book.douban.com/tag/%E7%BE%8E%E9%A3%9F',  # 美食
         # 'https://book.douban.com/tag/%E6%97%85%E8%A1%8C',  # 旅行
         # 'https://book.douban.com/tag/%E7%BB%8F%E6%B5%8E%E5%AD%A6',  # 经济学
