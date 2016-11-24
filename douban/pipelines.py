@@ -16,7 +16,7 @@ class FilePipeline(object):
     def process_item(self, item, spider):
         title = item['title']
         intro = item['intro']
-        category = item['category']
+        category = item['category'].encode('gbk')
         file_root_dir = 'book_intro'
         category_dir = os.path.join(file_root_dir, category)
         if not os.path.exists(file_root_dir):
@@ -24,7 +24,7 @@ class FilePipeline(object):
         if not os.path.exists(category_dir):
             os.mkdir(category_dir)
         if intro is not '':
-            with open(category_dir + '/' + title + '.txt', 'w') as f:
+            with open(category_dir + '/' + title.encode('gbk') + '.txt', 'w') as f:
                 f.write(intro)
                 f.close()
         return item
