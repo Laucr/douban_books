@@ -20,7 +20,6 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
     name = 'douban'
     allowed_domains = ['book.douban.com']
     start_urls = [
-        # 'https://book.douban.com/tag/%E5%84%BF%E7%AB%A5%E6%96%87%E5%AD%A6',  # 儿童文学
         'https://book.douban.com/tag/%E5%8F%A4%E5%85%B8%E6%96%87%E5%AD%A6',  # 古典文学
         'https://book.douban.com/tag/%E5%AE%97%E6%95%99',  # 宗教
         'https://book.douban.com/tag/%E7%A7%91%E5%B9%BB',  # 科幻
@@ -31,6 +30,7 @@ class DoubanBooksSpider(scrapy.spiders.Spider):
         'https://book.douban.com/tag/%E5%86%9B%E4%BA%8B',  # 军事
         'https://book.douban.com/tag/%E8%AF%97%E6%AD%8C',  # 诗歌
         'https://book.douban.com/tag/%E5%BB%BA%E7%AD%91',  # 建筑
+        # 'https://book.douban.com/tag/%E5%84%BF%E7%AB%A5%E6%96%87%E5%AD%A6',  # 儿童文学
         # 'https://book.douban.com/tag/%E5%8E%86%E5%8F%B2',  # 历史
         # 'https://book.douban.com/tag/%E6%8E%A8%E7%90%86',  # 推理
         # 'https://book.douban.com/tag/%E7%BE%8E%E9%A3%9F',  # 美食
